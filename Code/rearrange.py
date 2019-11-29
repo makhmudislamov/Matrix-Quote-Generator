@@ -10,7 +10,8 @@ def rearrange(user_input):
         rand_indx = random.randint(0, indx)
         # swapping
         user_input[indx], user_input[rand_indx] = user_input[rand_indx], user_input[indx]
-    print(user_input)
+        # adding * prints with space
+    print(*user_input)
 
 
 
