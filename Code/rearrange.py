@@ -1,5 +1,7 @@
+import random
+import sys
 
-def rearrange():
+def rearrange(user_input):
     """
     Returns randomly rearranged words taken from the command line
     """
@@ -8,4 +10,9 @@ def rearrange():
     # iterate through the list/string
     # and print randomly rearranged strings - always print all of the strings
     # and always print different combinations
-    pass
+    print(user_input)
+
+
+if __name__ == '__main__':
+    user_input = sys.argv[1]
+    rearrange(user_input)
