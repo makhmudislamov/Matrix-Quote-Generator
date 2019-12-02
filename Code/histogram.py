@@ -1,4 +1,4 @@
-
+from cleaner import file_cleaner
 
 class Histogram(object):
     
@@ -12,7 +12,9 @@ class Histogram(object):
         data structure that stores each unique word along with 
         the number of times the word appears in the source text.
         """
-        pass
+        file = "./sample_words.txt"
+        cleaned_text = file_cleaner(file)
+        
 
     def unique_words(self, histogram):
         """
