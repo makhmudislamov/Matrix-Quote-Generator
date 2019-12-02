@@ -30,7 +30,12 @@ class Histogram(object):
         """
         Takes a histogram argument and returns the total count of unique words in the histogram.
         """
-        pass
+        unique_word_count = 0
+
+        for word, _ in histogram.items():
+            unique_word_count += 1
+        
+        return unique_word_count
 
     def frequency(self, word, histogram):
         """
@@ -42,4 +47,6 @@ class Histogram(object):
 if __name__ == '__main__':
     file = "./sample_words.txt"
     hist = Histogram(file)
-    print(hist.histogram(file))
+    histogram = {'one': 3, 'fish': 6, 'two': 2,
+                 'red': 3, 'blue': 1, 'musor': 1}
+    print(hist.unique_words(histogram))
