@@ -6,9 +6,11 @@ def sample(histogram):
     and returns a single word, at random. It should not yet 
     take into account the distributions of the words
     """
-    # iterate through the histogram
+    # iterate through the histogram - list
     # return one random word
-    return random.choice(list(histogram))
+    listed = list(histogram)
+    rand_ind = random.randint(0, len(listed)-1)
+    return listed[rand_ind]
     
 if __name__ == '__main__':
     # file = "./sample_words.txt"
