@@ -1,0 +1,5 @@
+for virtualenv first I run
+virtualenv -p /usr/local/bin/python venv
+then I run
+virtualenv -p /usr/local/bin/python3 venv
+for python 3
