@@ -31,6 +31,12 @@ def stochastic_sample(histogram):
             return word
 
 
+def test_iteration(histogram, iteration):
+    """
+    Creates hisogram based on stochastic sampling and iterating given amount to prove stochastic sampmling
+    """
+    word_list = [stochastic_sample(histogram) for x in range(iteration)]
+    return histogram(word_list)
     
 if __name__ == '__main__':
     # file = "./sample_words.txt"
