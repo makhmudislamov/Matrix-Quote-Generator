@@ -1,5 +1,6 @@
 import random
 from datetime import datetime
+from histogram import *
 
 
 def histogram_dict(word_list):
@@ -63,17 +64,16 @@ def test_iteration(histogram, iteration):
     Creates hisogram based on stochastic sampling and iterating given amount to prove stochastic sampmling
     """
     word_list = [stochastic_sample(histogram) for x in range(iteration)]
-    
+    # should use Histogram class build method
     return histogram_dict(word_list)
     
 if __name__ == '__main__':
-    # file = "./sample_words.txt"
-    histogram = {'one': 3, 'fish': 6, 'two': 2,
-                 'red': 3, 'blue': 1, 'musor': 1}
+    file = "./sample_words.txt"
     # print(random_word(histogram))
+    histogram = Histogram().build(file)
 
     start_time = datetime.now()
-    # histogram = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
     print(test_iteration(histogram, 10000))
+    print(stochastic_sample(histogram))
     print(datetime.now()-start_time)
     
