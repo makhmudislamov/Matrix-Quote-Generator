@@ -22,7 +22,7 @@ class Histogram(object):
                 self.histogram[word] = 1
             else:
                 self.histogram[word] += 1
-        # print(self.histogram)
+        print(self.histogram)
         return self.histogram
 
 

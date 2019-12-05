@@ -1,8 +1,5 @@
-for virtualenv first I run
-virtualenv -p /usr/local/bin/python venv
-then I run
-virtualenv -p /usr/local/bin/python3 venv
-for python 3
+for virtualenv instllation:
+virtualenv -p python3 matrix
 
 ACTIVATE VENV command:
-source venv/bin/activate
+source /bin/activate
