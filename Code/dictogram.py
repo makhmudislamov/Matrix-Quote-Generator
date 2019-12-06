@@ -39,7 +39,19 @@ class Dictogram(dict):
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
-        # TODO: Randomly choose a word based on its frequency in this histogram
+        
+        self.tokens = 0
+
+        cumulative_probability = 0.0
+        # you can use sum()
+        for word_frequency in self.values():
+            self.tokens += word_frequency  # this works until here, tested with print
+
+        random_choice = random.uniform(0, 1)
+        for word, word_frequency in self.items():
+            cumulative_probability += word_frequency/self.tokens
+            if cumulative_probability >= random_choice:
+                return word
 
 
 def print_histogram(word_list):
