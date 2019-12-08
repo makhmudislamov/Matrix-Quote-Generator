@@ -25,12 +25,17 @@ def markov_chain_one(pure_text):
     Goes through the input text, after determining the sequence of string
     generates 1st order markov chain
     """
-    markov_hist = Dictogram()
+    markov_chain = Dictogram()
 
     # iterating over the list and want to use each word as key, value as nested dict for markov_dict
     for index in range(len(pure_text)-1):
         word = pure_text[index]
-        print(word)
+        
+
+        # filling the markov chain dict
+        if word not in markov_chain:
+            markov_chain[word] = Dictogram([pure_text[index + 1]])
+            print(markov_chain)
 
     
 print(markov_chain_one(pure_text))
