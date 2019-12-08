@@ -12,8 +12,25 @@ When you're ready, try your implementation out on a real corpus and see how it c
 
 
 from cleaner import file_cleaner
-from dictogram import *
+from dictogram import Dictogram
 
-# cleaning the corpus and returning as a list of strings
+# cleaning the corpus and returning as a list of strings - also can be considered as tokenization
 pure_text = file_cleaner("./sample_words.txt")
 print(pure_text)
+
+
+
+def markov_chain_one(pure_text):
+    """
+    Goes through the input text, after determining the sequence of string
+    generates 1st order markov chain
+    """
+    markov_hist = Dictogram()
+
+    # iterating over the list and want to use each word as key, value as nested dict for markov_dict
+    for index in range(len(pure_text)-1):
+        word = pure_text[index]
+        print(word)
+
+    
+print(markov_chain_one(pure_text))
