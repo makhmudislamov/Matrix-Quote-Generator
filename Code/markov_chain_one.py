@@ -9,3 +9,11 @@ Make sure to think about what data structures to use to make your code efficient
 
 When you're ready, try your implementation out on a real corpus and see how it compares to the stochastic sampler!
 """
+
+
+from cleaner import file_cleaner
+from dictogram import *
+
+# cleaning the corpus and returning as a list of strings
+pure_text = file_cleaner("./sample_words.txt")
+print(pure_text)
