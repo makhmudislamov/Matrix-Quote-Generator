@@ -1,6 +1,7 @@
 from cleaner import file_cleaner
 from dictogram import Dictogram
-import sample
+from sample import stochastic_sample
+import random
 
 # cleaning the corpus and returning as a list of strings - also can be considered as tokenization
 pure_text = file_cleaner("./sample_words.txt")
@@ -46,13 +47,32 @@ def markov_chain_n_order(n_order, pure_text):
            
     return markov_chain
 
-markov_chain_n_order(3, pure_text)
+# markov_chain_n_order(3, pure_text)
 
+def starting_word(pure_text):
+    """
+    Returns randomly picked word from the list of pure_text
+    """
+    rand_ind = random.randint(0, len(pure_text)-1)
+    return pure_text[rand_ind]
+
+
+print(starting_word(pure_text))
 def generate_sentence(m_chained_dict):
     """
     Takes markov chained dictionary and generates a sentence
     """
     output_sentence = []
+    
+    # current word =  randomly choose a starting word from the markov_chain
+    # while length of the output is not equal to wanted length
+    # randomly choose next word from the starting words (values()) based on weight
+    # update the current_word = chosen child of previous word
+
+    pass
+
+
+if __name__ == '__main__':
     pass
     
 

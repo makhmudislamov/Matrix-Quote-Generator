@@ -74,6 +74,6 @@ if __name__ == '__main__':
 
     start_time = datetime.now()
     print(test_iteration(histogram, 10000))
-    print(stochastic_sample(histogram))
+    # print(stochastic_sample(histogram))
     print(datetime.now()-start_time)
     
