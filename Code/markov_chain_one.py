@@ -57,22 +57,28 @@ def starting_word(pure_text):
     return pure_text[rand_ind]
 
 
-print(starting_word(pure_text))
-def generate_sentence(m_chained_dict):
+# print(starting_word(pure_text))
+def generate_sentence(length, m_chained_dict):
     """
     Takes markov chained dictionary and generates a sentence
     """
     output_sentence = []
     
-    # current word =  randomly choose a starting word from the markov_chain
+    current_word = starting_word(pure_text)
     # while length of the output is not equal to wanted length
-    # randomly choose next word from the starting words (values()) based on weight
-    # update the current_word = chosen child of previous word
+    while len(output_sentence) != length:
 
-    pass
+    # randomly choose next word from the starting words (values()) based on weight
+        next_word = stochastic_sample(m_chained_dict[current_word])
+        output_sentence.append(next_word)
+        current_word = next_word
+    # update the current_word = chosen child of previous word
+    print(*output_sentence)
 
 
 if __name__ == '__main__':
-    pass
+
+    m_chained_dict = markov_chain_one(pure_text)
+    generate_sentence(5, m_chained_dict)
     
 
