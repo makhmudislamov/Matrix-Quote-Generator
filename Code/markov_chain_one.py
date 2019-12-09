@@ -5,6 +5,7 @@ import random
 
 # cleaning the corpus and returning as a list of strings - also can be considered as tokenization
 pure_text = file_cleaner("./sample_words.txt")
+# pure_text = file_cleaner("./fish.txt")
 # print(pure_text)
 
 def markov_chain_one(pure_text):
@@ -36,7 +37,7 @@ def markov_chain_n_order(n_order, pure_text):
     for index in range(len(pure_text)-n_order):
         # pure_text[index] should be our word from list
         sequence_range = tuple(pure_text[index: index + n_order])
-        print("sequence range", sequence_range)
+        # print("sequence range", sequence_range)
         # check if key is stored already
         if sequence_range not in markov_chain:
             #  create new entry with window as key and dictogram as value
@@ -49,12 +50,20 @@ def markov_chain_n_order(n_order, pure_text):
 
 # markov_chain_n_order(3, pure_text)
 
-def starting_word(pure_text):
+def starting_word(pure_text, markov_chain):
     """
     Returns randomly picked word from the list of pure_text
     """
+# randomly choose a word from array version of pure text
+# find the markov_chain.key that has that randomly chosen word
+# return the whole key.
     rand_ind = random.randint(0, len(pure_text)-1)
-    return pure_text[rand_ind]
+    random_word = pure_text[rand_ind]
+
+    for words in markov_chain.keys():
+        if random_word in words:
+            return words
+   
 
 
 # print(starting_word(pure_text))
@@ -64,9 +73,9 @@ def generate_sentence(length, m_chained_dict):
     """
     output_sentence = []
     
-    current_word = starting_word(pure_text)
+    current_word = starting_word(pure_text, m_chained_dict)
     # while length of the output is not equal to wanted length
-    while len(output_sentence) != length:
+    while len(output_sentence) != length and current_word in m_chained_dict: 
 
     # randomly choose next word from the starting words (values()) based on weight
         next_word = stochastic_sample(m_chained_dict[current_word])
@@ -74,11 +83,13 @@ def generate_sentence(length, m_chained_dict):
         current_word = next_word
     # update the current_word = chosen child of previous word
     print(*output_sentence)
+    # TODO: if the word is last in the text its breaking
 
 
 if __name__ == '__main__':
-
-    m_chained_dict = markov_chain_one(pure_text)
-    generate_sentence(5, m_chained_dict)
+    markov_chain = markov_chain_n_order(3, pure_text)
+    # print(starting_word(pure_text, markov_chain))
+    # print(markov_chain)
+    generate_sentence(8, markov_chain)
     
 
