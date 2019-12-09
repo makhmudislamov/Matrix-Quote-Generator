@@ -35,7 +35,7 @@ def markov_chain_n_order(n_order, pure_text):
     for index in range(len(pure_text)-n_order):
         # pure_text[index] should be our word from list
         sequence_range = tuple(pure_text[index: index + n_order])
-
+        print("sequence range", sequence_range)
         # check if key is stored already
         if sequence_range not in markov_chain:
             #  create new entry with window as key and dictogram as value
@@ -46,7 +46,7 @@ def markov_chain_n_order(n_order, pure_text):
            
     return markov_chain
 
-print(markov_chain_n_order(2, pure_text))
+markov_chain_n_order(3, pure_text)
 
 def generate_sentence(m_chained_dict):
     """
