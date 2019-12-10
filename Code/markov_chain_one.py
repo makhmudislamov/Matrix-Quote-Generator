@@ -4,7 +4,7 @@ from sample import stochastic_sample
 import random
 
 # cleaning the corpus and returning as a list of strings - also can be considered as tokenization
-pure_text = file_cleaner("./sample_words.txt")
+pure_text = file_cleaner("./corpus.txt")
 # pure_text = file_cleaner("./fish.txt")
 # print(pure_text)
 
@@ -75,16 +75,16 @@ def generate_sentence(length, markov_chain):
     
     current_words = starting_word(pure_text, markov_chain)
     # while length of the output is not equal to wanted length
-    output_sentence.append(current_words)
-    print("output before while loop", output_sentence)
+    # output_sentence.append(current_words)
+    # print("output before while loop", output_sentence)
     while len(output_sentence) != length:  # and current_words in markov_chain
 
     # randomly choose next word from the starting words (values()) based on weight
-        print("current_word", current_words)
-        print("current_words value is: ", markov_chain.get(current_words))
+        # print("current_word", current_words)
+        # print("current_words value is: ", markov_chain.get(current_words))
         
         next_word = stochastic_sample(markov_chain.get(current_words))
-        print("next word", next_word)
+        # print("next word", next_word)
         output_sentence.append(next_word)
         current_words = next_word
         current_words = starting_word(pure_text, markov_chain)
@@ -94,9 +94,7 @@ def generate_sentence(length, markov_chain):
 
 
 if __name__ == '__main__':
-    markov_chain = markov_chain_n_order(3, pure_text)
+    markov_chain = markov_chain_n_order(5, pure_text)
     # print(starting_word(pure_text, markov_chain))
     # print(markov_chain)
     generate_sentence(8, markov_chain)
-    
-
