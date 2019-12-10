@@ -67,20 +67,27 @@ def starting_word(pure_text, markov_chain):
 
 
 # print(starting_word(pure_text))
-def generate_sentence(length, m_chained_dict):
+def generate_sentence(length, markov_chain):
     """
     Takes markov chained dictionary and generates a sentence
     """
     output_sentence = []
     
-    current_word = starting_word(pure_text, m_chained_dict)
+    current_words = starting_word(pure_text, markov_chain)
     # while length of the output is not equal to wanted length
-    while len(output_sentence) != length and current_word in m_chained_dict: 
+    output_sentence.append(current_words)
+    print("output before while loop", output_sentence)
+    while len(output_sentence) != length:  # and current_words in markov_chain
 
     # randomly choose next word from the starting words (values()) based on weight
-        next_word = stochastic_sample(m_chained_dict[current_word])
+        print("current_word", current_words)
+        print("current_words value is: ", markov_chain.get(current_words))
+        
+        next_word = stochastic_sample(markov_chain.get(current_words))
+        print("next word", next_word)
         output_sentence.append(next_word)
-        current_word = next_word
+        current_words = next_word
+        current_words = starting_word(pure_text, markov_chain)
     # update the current_word = chosen child of previous word
     print(*output_sentence)
     # TODO: if the word is last in the text its breaking
