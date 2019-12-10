@@ -67,10 +67,11 @@ def starting_word(pure_text, markov_chain):
 
 
 # print(starting_word(pure_text))
-def generate_sentence(length, markov_chain):
+def generate_sentence(length=8):
     """
     Takes markov chained dictionary and generates a sentence
     """
+    markov_chain = markov_chain_n_order(4, pure_text)
     output_sentence = []
     
     current_words = starting_word(pure_text, markov_chain)
@@ -89,12 +90,13 @@ def generate_sentence(length, markov_chain):
         current_words = next_word
         current_words = starting_word(pure_text, markov_chain)
     # update the current_word = chosen child of previous word
-    print(*output_sentence)
+    final = ' '.join(output_sentence)
+    return final
     # TODO: if the word is last in the text its breaking
 
 
 if __name__ == '__main__':
-    markov_chain = markov_chain_n_order(5, pure_text)
+    # markov_chain = 
     # print(starting_word(pure_text, markov_chain))
     # print(markov_chain)
-    generate_sentence(8, markov_chain)
+    print(generate_sentence())
