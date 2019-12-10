@@ -5,9 +5,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def markov():
-    # markov_chain = markov_chain_n_order(5, pure_text)
-    
+def markov():    
     final = generate_sentence(20)
     return final
 
