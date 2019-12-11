@@ -1,11 +1,20 @@
 import random
 import sys
 from pprint import pprint
+from time import sleep
 
 from cleaner import file_cleaner
 from dictogram import Dictogram
 from sample import stochastic_sample
 
+
+def delay_print(string):
+    for c in string:
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        sleep(0.05)
+    print('')
+    return ">>"
 
 def markov_chain_one(pure_text):
     """
@@ -131,4 +140,4 @@ if __name__ == '__main__':
     markov_chain = markov_chain_n_order(order, pure_text)
     # print('start state:', starting_state(markov_chain))
     # pprint(markov_chain)
-    print('sentence:', generate_sentence(markov_chain, 20))
+    delay_print(generate_sentence(markov_chain, 20))
