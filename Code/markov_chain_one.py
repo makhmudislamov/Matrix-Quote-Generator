@@ -87,7 +87,7 @@ def generate_sentence(markov_chain, length=8):
     """
     # current_words = starting_word(pure_text, markov_chain)
     previous_state = starting_state(markov_chain)
-    print('start state:', previous_state)
+    # print('start state:', previous_state)
     if previous_state not in markov_chain:
         print(previous_state, "not in Marov chain")
 
@@ -126,7 +126,8 @@ def generate_sentence(markov_chain, length=8):
     sentence = ' '.join(sampled_words)
     final_sentence = sentence.capitalize() + "."
     return final_sentence
-    # TODO: if the word is last in the text its breaking
+    # delay_print(final_sentence)
+    
 
 
 if __name__ == '__main__':
@@ -140,4 +141,4 @@ if __name__ == '__main__':
     markov_chain = markov_chain_n_order(order, pure_text)
     # print('start state:', starting_state(markov_chain))
     # pprint(markov_chain)
-    delay_print(generate_sentence(markov_chain, 20))
+    generate_sentence(markov_chain, 20)

@@ -73,16 +73,25 @@ h1, h2, p {
 	<body>
 
 		<div id='console' class="outer">
-            <h2>Working YEEEEEEEEEEEE</h2>
+            <h2>{{displayed}}</h2>
         </div>
         <div id='menu' class="footer">
         <table width="50%">
-
-
-
-
         </table>
           </div>
+    <script>
+        var showText = function (target, message, index, interval) {
+
+            if (index < message.length) {
+                $(target).append(message[index++]);
+                setTimeout(function () { showText(target, message, index, interval); }, interval);
+                }
+            }
+
+        $(function () {
+            showText("#", "HELLOOOOOOOO WOOOOOOORLD", 0, 500);   
+        });
+    </script>
 	</body>
 
 </html>
