@@ -1,5 +1,13 @@
 for virtualenv instllation:
-virtualenv -p python3 matrix
+virtualenv -p python3 env
 
 ACTIVATE VENV command:
-source /bin/activate
+source env/bin/activate
+
+
+Autocomplete feature:
+1. from input take a word = starting_words for sentence generation >>> POST METHOD
+2. show the starting_words 
+
+ to generate_sentence() >>> return the generated sentece and display it in home.html
+3. everytime new word is input, the page should refresh and print new sentence. 
