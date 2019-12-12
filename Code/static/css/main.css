@@ -1,4 +1,4 @@
-html, body ,a{
+html, body{
 	background:#000000;
 	color:#00FF00;
 	font-family:monospace;
@@ -8,43 +8,6 @@ html, body ,a{
 
 
 
-.wrapper {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
-	background:#0000ff;
-}
 
 
-.accessGranted{
-	position:fixed;
-	top:200px;
-	background:#333;
-	padding:20px;
-	border:1px solid #999;
-	width:300px;
-	left:50%;
-	margin-left:-150px;
-	text-align:center;
-}
 
-.accessDenied{
-	position:fixed;
-	top:200px;
-	color:#F00;
-	background:#511;
-	padding:20px;
-	border:1px solid #F00;
-	width:300px;
-	left:50%;
-	margin-left:-150px;
-	text-align:center;
-}
-
-.inverse{
-	background:#00FF00;
-	color:#000000;
-	font-family:monospace;
-	height: 100%;
-}

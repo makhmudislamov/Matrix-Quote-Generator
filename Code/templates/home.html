@@ -32,17 +32,8 @@ html, body {
 * html .outer {
     height:100%
 }
-#header {
-  //  background:red;
-    border-top:40px solid #fff; /* soak up negative margin and allows header to start at top of page*/
-}
-.footer {/* footer now sits at bottom of window*/
-  //  background:red;
-    //width:760px;
-    margin:auto;
-    height:40px;/* must match negative margin of #outer */
-    clear:both;
-}
+
+
 /*Opera Fix*/
 body:before {/* thanks to Maleika (Kohoutec)*/
     content:"";
@@ -76,21 +67,20 @@ h1, h2, p {
 		<div id='console' class="outer">
             <h2 id='sentence'>{{displayed}}</h2>
         </div>
-        <div id='menu' class="footer">
-        <table width="50%">
-        </table>
+
           </div>
     <script>
+    // function that prints the sentece letter by letter
         let message = document.getElementById('sentence').innerHTML;
         console.log(message)
-        var showText = function (target, message, index, interval) {
+        var delayPrint = function (target, message, index, interval) {
             if (index < message.length) {
                 $(target).append(message[index++]);
-                setTimeout(function () { showText(target, message, index, interval); }, interval);
+                setTimeout(function () { delayPrint(target, message, index, interval); }, interval);
                 }
             }
         $(function () {
-            showText("#sentence", message, 0, 30);   
+            delayPrint("#sentence", message, 0, 30);   
         });
         
     </script>
