@@ -63,34 +63,36 @@ h1, h2, p {
 </style>
 		<meta charset="utf-8">
 
-		<title>Hacker Typer</title>
+		<title>Red Pill Quotes</title>
 		<meta name="keywords" content="Objective-C,ThinkGeek,Python,Ruby,Javascript,HTML&CSS,programming,programmer,web developer,software developer">
 
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
 	</head>
 
 	<body>
 
 		<div id='console' class="outer">
-            <h2>{{displayed}}</h2>
+            <h2 id='sentence'>{{displayed}}</h2>
         </div>
         <div id='menu' class="footer">
         <table width="50%">
         </table>
           </div>
     <script>
+        let message = document.getElementById('sentence').innerHTML;
+        console.log(message)
         var showText = function (target, message, index, interval) {
-
             if (index < message.length) {
                 $(target).append(message[index++]);
                 setTimeout(function () { showText(target, message, index, interval); }, interval);
                 }
             }
-
         $(function () {
-            showText("#", "HELLOOOOOOOO WOOOOOOORLD", 0, 500);   
+            showText("#sentence", message, 0, 30);   
         });
+        
     </script>
 	</body>
 
