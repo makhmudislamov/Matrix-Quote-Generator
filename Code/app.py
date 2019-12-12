@@ -13,10 +13,14 @@ markov_chain = markov_chain_n_order(4, pure_text)
 
 @app.route('/', methods=['POST', 'GET'])
 def markov():
-
+    vocabulary = get_lines('./corpus.txt')
+    structure = autocomplete_setup(vocabulary)
+    # getting user input = prefix
     if request.method == 'POST':
         prefix = request.form['prefix']
-        print(prefix)
+        # pasting prefix to autocomplete()
+        words_to_choose = autocomplete(prefix, structure)
+        print(words_to_choose)
     generated_sentence = generate_sentence(markov_chain, 20)
     return render_template('home.html', displayed=generated_sentence)
 
