@@ -6,13 +6,13 @@ import time
 from cleaner import file_cleaner
 
 
-def get_lines(filename='./corpus.txt'):
-    # filename = file_cleaner('./corpus.txt')
+def get_lines(filename):
+    filename = file_cleaner('./corpus.txt')
     """Return a list of strings on separate lines in the given text file with
     any leading and trailing whitespace characters removed from each line."""
     # Open file and remove whitespace from each line
-    with open(filename) as file:
-        lines = [line.strip() for line in file]
+    # with open(filename) as file:
+    lines = [line.strip() for line in filename]
     return lines
 
 
@@ -63,7 +63,7 @@ def main():
     elif len(sys.argv) == 2:
         # Test autocomplete with dictionary words and the given prefix
         prefix = sys.argv[1]
-        vocabulary = get_lines('/usr/share/dict/words')
+        vocabulary = get_lines('./corpus.txt')
 
         # Start the clock for benchmarking
         start_time = time.time()

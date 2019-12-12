@@ -63,19 +63,35 @@ h1, h2, p {
 	</head>
 
 	<body style="text-align:center; ">
-         <div id="autcomplete">
-                <h1>Red Pill Quotes from The Matrix</h1> 
+            <h1>Red Pill Quotes from The Matrix</h1> 
   
                 <h2>   
                     Autocomplete Attribute
-                </h2> 
-                <form id="starting_word"> 
-                    <input style="radius: 50%; height: 20px; background: black; borders: white;" type="text"
-                        autocomplete="on"
+                </h2>
+         <div id="generateWord">
+                 
+                <form id="startingWord" action="/" method = "post"> 
+                    <input style="radius: 50%; height: 20px; borders: white;" type="text"
+                        
                         id="text_id" 
-                        name="fname"> 
+                        name="prefix"> 
             
-                    <input type="submit"> 
+                    <input type="submit" value="Generate words">
+            
+                </form> 
+         </div>
+
+         
+
+         <div id="autcomplete">
+                <h3>Copy paste your word below</h3> 
+                <form id="sentenceGeneration"> 
+                    <input style="radius: 50%; height: 20px; borders: white;" type="text"
+                        
+                        id="sentence_id" 
+                        name="sentence"> 
+            
+                    <input type="submit" value="Generate a quote">
             
                 </form> 
          </div>
@@ -84,6 +100,7 @@ h1, h2, p {
 
 		<div stryle="margin: 0 auto;" id='console' class="outer">
             <h2 id='sentence'>{{displayed}}</h2>
+            
         </div>
 
           </div>

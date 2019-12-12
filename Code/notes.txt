@@ -6,8 +6,18 @@ source env/bin/activate
 
 
 Autocomplete feature:
-1. from input take a word = starting_words for sentence generation >>> POST METHOD
-2. show the starting_words 
+1. from input take a prefix = word_prefix for autocomplete() >>> POST METHOD
+2. show top 5 results = starting_words 
 
- to generate_sentence() >>> return the generated sentece and display it in home.html
-3. everytime new word is input, the page should refresh and print new sentence. 
+3. pass chosen starting_word (need to copy paste to another form) to generate_sentence() >>> return the generated sentece and display it in home.html
+4. everytime new word is input, the page should refresh and print new sentence. 
+
+
+{% comment %} <div id="wordOptions"> {% endcomment %}
+            {% comment %} 
+                top 5 words will be displayed here
+             {% endcomment %}
+         
+         {% comment %} </div> {% endcomment %}
+
+         {% comment %} {{displayed}} {% endcomment %}
