@@ -6,13 +6,11 @@ from autocomplete import *
 
 app = Flask(__name__)
 
-
 vocabulary = get_lines('./corpus.txt')
 structure = autocomplete_setup(vocabulary)
 
-
 @app.route('/', methods=['POST', 'GET'])
-def markov():
+def get_prefix():
     # getting user input = prefix
     if request.method == 'POST':
         prefix = request.form['prefix']
@@ -20,7 +18,7 @@ def markov():
         words_to_choose = autocomplete(prefix, structure)
         print("generated words", words_to_choose)
     
-    return render_template('home.html', words=words_to_choose)
+    return render_template('home.html')
 
 
 @app.route('/words', methods=['POST', 'GET'])
