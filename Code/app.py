@@ -22,8 +22,8 @@ def get_prefix():
 
 
 @app.route('/words', methods=['POST', 'GET'])
-def funcname(parameter_list):
-    pass
+def funcname():
+    return render_template('retrieved.html')
 
 @app.route('/quote', methods=['POST', 'GET'])
 def quote():
