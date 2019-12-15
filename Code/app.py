@@ -6,9 +6,7 @@ from autocomplete import *
 
 app = Flask(__name__)
 
-filename = './corpus.txt'
-pure_text = file_cleaner(filename)
-markov_chain = markov_chain_n_order(4, pure_text)
+
 vocabulary = get_lines('./corpus.txt')
 structure = autocomplete_setup(vocabulary)
 
@@ -21,8 +19,8 @@ def markov():
         # pasting prefix to autocomplete()
         words_to_choose = autocomplete(prefix, structure)
         print("generated words", words_to_choose)
-    generated_sentence = generate_sentence(markov_chain, 20)
-    return render_template('home.html', displayed=generated_sentence, words=words_to_choose)
+    
+    return render_template('home.html', words=words_to_choose)
 
 
 @app.route('/words', methods=['POST', 'GET'])
@@ -30,8 +28,12 @@ def funcname(parameter_list):
     pass
 
 @app.route('/quote', methods=['POST', 'GET'])
-def func(parameter_list):
-    pass
+def quote():
+    filename = './corpus.txt'
+    pure_text = file_cleaner(filename)
+    markov_chain = markov_chain_n_order(4, pure_text)
+    generated_sentence = generate_sentence(markov_chain, 20)
+    return render_template('sentence.html', displayed=generated_sentence)
 
 
 if __name__ == '__main__':
