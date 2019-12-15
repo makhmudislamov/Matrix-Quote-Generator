@@ -73,11 +73,17 @@ def starting_word(pure_text, markov_chain):
             return words
     
 
-def starting_state(markov_chain):
+def starting_state(markov_chain, word):
     """
     Returns randomly picked state from the Markov chain
     """
-    return random.choice(list(markov_chain.keys()))
+    starting_keys = []
+    for words_tuple in markov_chain.keys():
+        if word in words_tuple:
+            starting_keys.append(words_tuple)
+            # print(f"key in markov that has {word} and the key is {words_tuple} ")
+    # print(f" starting keys {starting_keys}")
+    return random.choice(starting_keys)
 
 
 # print(starting_word(pure_text))
@@ -132,7 +138,7 @@ def generate_sentence(markov_chain, length=8):
 
 if __name__ == '__main__':
     order = int(sys.argv[1]) if len(sys.argv) > 1 else 1
-    filename = sys.argv[2] if len(sys.argv) > 2 else "./fish.txt"
+    filename = sys.argv[2] if len(sys.argv) > 2 else "./sample_words.txt"
     # cleaning the corpus and returning as a list of strings - also can be considered as tokenization
     pure_text = file_cleaner(filename)
     # pure_text = file_cleaner("./sample_words.txt")
@@ -141,4 +147,5 @@ if __name__ == '__main__':
     markov_chain = markov_chain_n_order(order, pure_text)
     # print('start state:', starting_state(markov_chain))
     # pprint(markov_chain)
-    delay_print(generate_sentence(markov_chain, 20))
+    print(starting_state(markov_chain, "loxy"))
+    # print(generate_sentence(markov_chain, 9))

@@ -35,4 +35,8 @@ also here we should have a form to POST chosen words then it should redirect to
 
 Route: "/quote" >>> sentence.html >>> to SHOW generated sentence
 
+All the above routes and relevant htmls are working
+now I have to work with my generate_sentence function. It should take a string 
+find the keys that contains this string and then proceed to sentence generation
+
          

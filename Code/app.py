@@ -35,6 +35,9 @@ def autocompleted_words():
 
 @app.route('/quote', methods=['POST', 'GET'])
 def quote():
+    """
+    Show generated sentence
+    """
     filename = './corpus.txt'
     pure_text = file_cleaner(filename)
     markov_chain = markov_chain_n_order(4, pure_text)
