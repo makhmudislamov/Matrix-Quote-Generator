@@ -24,4 +24,15 @@ returns json >> update the DOM element.
 
          {% comment %} {{displayed}} {% endcomment %}
 
+
+Arcitechture 
+
+Route: "/" >> home.html >>> should take prefix input POST METHOD
+then it should redirect to
+
+Route: "/words" >> retrieved.html >>> to SHOW all autocompleted words to choose from for loop should be here 
+also here we should have a form to POST chosen words then it should redirect to
+
+Route: "/quote" >>> sentence.html >>> to SHOW generated sentence
+
          

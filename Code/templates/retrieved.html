@@ -58,31 +58,39 @@ h1, h2, p {
 		<meta name="keywords" content="Objective-C,ThinkGeek,Python,Ruby,Javascript,HTML&CSS,programming,programmer,web developer,software developer">
 
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
 	</head>
 
 	<body style="text-align:center; ">
             <h1>Red Pill Quotes from The Matrix</h1> 
 
-  
-                <h2>   
-                    Autocomplete Attribute
-                </h2>
-         <div id="takePrefix">
-                 
-                <form id="startingWord" action="/" method = "post"> 
+            <table id="generatedWords" style="text-align:center; ">
+                <tr>
+                    <th>Choose a word to generate a sentence</th>
+                </tr>
+                        {% for word in words %}
+                    <tr>
+                        <th>{{word}}</th>
+                    </tr>
+                        {% endfor %}
+            </table>
+
+        <div id="autcomplete">
+                <h3>Copy paste your word below</h3> 
+                <form id="sentenceGeneration"> 
                     <input style="radius: 50%; height: 20px; borders: white;" type="text"
                         
-                        id="text_id" 
-                        name="prefix"> 
+                        id="sentence_id" 
+                        name="sentence"> 
             
-                    <input type="submit" value="Submit prefix">
+                    <input type="submit" value="Generate a quote">
             
                 </form> 
-         </div>
-        <footer>
-            <h3>this is home page and should take prefix input</h3>
-        </footer>
+        </div>
+                <footer>
+                    <h3>this is retireved.html. it should show the words and input box for chosen word</h3>
+                </footer>
 	</body>
 
 </html>
