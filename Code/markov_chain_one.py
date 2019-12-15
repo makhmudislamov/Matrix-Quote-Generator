@@ -141,4 +141,4 @@ if __name__ == '__main__':
     markov_chain = markov_chain_n_order(order, pure_text)
     # print('start state:', starting_state(markov_chain))
     # pprint(markov_chain)
-    generate_sentence(markov_chain, 20)
+    delay_print(generate_sentence(markov_chain, 20))

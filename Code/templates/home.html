@@ -68,7 +68,7 @@ h1, h2, p {
                 <h2>   
                     Autocomplete Attribute
                 </h2>
-         <div id="generateWord">
+         <div id="takePrefix">
                  
                 <form id="startingWord" action="/" method = "post"> 
                     <input style="radius: 50%; height: 20px; borders: white;" type="text"
@@ -80,6 +80,16 @@ h1, h2, p {
             
                 </form> 
          </div>
+                <table id="generatedWords" style="text-align:center; ">
+                    <tr>
+                        <th>Choose a word to generate a sentence</th>
+                    </tr>
+                    {% for word in words %}
+                    <tr>
+                        <th>{{word}}</th>
+                    </tr>
+                    {% endfor %}
+                </table>
      
          <div id="autcomplete">
                 <h3>Copy paste your word below</h3> 

@@ -12,6 +12,8 @@ Autocomplete feature:
 3. pass chosen starting_word (need to copy paste to another form) to generate_sentence() >>> return the generated sentece and display it in home.html
 4. everytime new word is input, the page should refresh and print new sentence. 
 
+use ajax call for input box - calls to ur server on different route and provides autocomplete 
+returns json >> update the DOM element. 
 
 {% comment %} <div id="wordOptions"> {% endcomment %}
             {% comment %} 
@@ -21,3 +23,5 @@ Autocomplete feature:
          {% comment %} </div> {% endcomment %}
 
          {% comment %} {{displayed}} {% endcomment %}
+
+         

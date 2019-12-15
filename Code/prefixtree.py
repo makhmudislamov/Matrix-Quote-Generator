@@ -40,27 +40,36 @@ class PrefixTree:
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
 
-        result = self._find_node(string)
+        result, _ = self._find_node(string)
         # result is a tuple thats why check
         # if the first item is None. Tuple itself cannot be None
-        if result[0] is not None:
+        if result is not None:
             return True
         return False
 
     def insert(self, string):
         """Insert the given string into this prefix tree."""
+# Drew's code
+        if self.contains(string):
+             return
+        # # Insert string into tree
+        curr_node = self.root
+        for indx, char in enumerate(string):
+            # if char DNE in tree, increase size
 
-        current_node = self.root
+            # Traverse to next child in char is alread in string
+            if curr_node.has_child(char):
+                curr_node = curr_node.get_child(char)
 
-        for _, char in enumerate(string):
-            if current_node.has_child(char):
-                current_node = current_node.get_child(char)
+            # Otherwise, add the child
             else:
-                current_node.add_child(char, PrefixTreeNode(char))
-                current_node = current_node.get_child(char)
-        # marking the last char as terminal
-        current_node.terminal = True
-        self.size += 1
+                curr_node.add_child(char, PrefixTreeNode(char))
+                curr_node = curr_node.get_child(char)
+
+            # Change last node in str to terminal
+            if indx == len(string) - 1:
+                curr_node.terminal = True
+                self.size += 1
 
     def _find_node(self, string):
         """Return a tuple containing the node that terminates the given string
@@ -77,35 +86,58 @@ class PrefixTree:
         for index, char in enumerate(string):
             if current_node.has_child(char):
                 current_node = current_node.get_child(char)
-                # print(f'cur node {char}')
+                # return current_node, index + 1 # this line is fixing completions in tongue-twisters but not in the test
             else:
                 return None, index + 1
+
         # if the last char is terminal
         if current_node.terminal is True:
-            # print("current node is terminal")
+            # print("current node is terminal", current_node)
             return current_node, index + 1
         else:
             return None, index + 1
 
-    def complete(self, prefix=""):
+    def _find_prefix_node(self, string):
+        """Return a tuple containing the node that terminates the given string
+        in this prefix tree and the node's depth, or if the given string is not
+        completely found, return None and the depth of the last matching node.
+        Search is done iteratively with a loop starting from the root node."""
+        # Match the empty string
+        if len(string) == 0:
+            return self.root
+
+        # Start with the root node
+        current_node = self.root
+
+        for index, char in enumerate(string):
+            if current_node.has_child(char):
+                current_node = current_node.get_child(char)
+                # return current_node, index + 1 # this line is fixing completions in tongue-twisters but not in the test
+            else:
+                return None
+
+        return current_node
+
+    def complete(self, prefix=''):
         """Return a list of all strings stored in this prefix tree that start
         with the given prefix string."""
         # Create a list of completions in prefix tree
+        # TODO; debug this method and update Anisha, another project
         completions = []
 
         # base case - prefix is a finished string
-        if self._find_node(prefix) is True:
-            completions.append(prefix)
+        # if self._find_node(prefix) is True:
+        #     completions.append(prefix)
 
-        current_node, _ = self._find_node(prefix)
+        current_node = self._find_prefix_node(prefix)
 
-        if current_node is None:
+        if current_node == None:
+            # print("Current node", current_node)  # this is printing None
             return completions
 
-        if self.is_empty():
-            return completions
-        else:
-            self._traverse(current_node, prefix, completions.append)
+        if not self.is_empty():
+           self._traverse(current_node, prefix, completions.append)
+        #    print("current node after traverse", current_node)
 
         return completions
 
@@ -118,11 +150,14 @@ class PrefixTree:
     def _traverse(self, node, prefix, visit):
         """Traverse this prefix tree with recursive depth-first traversal.
         Start at the given node and visit each node with the given function."""
+
         if node.terminal:
             visit(prefix)
 
         for char, child in node.children.items():
-            self._traverse(child, prefix+char, visit)
+            # print(f"char {char} and child {child}")
+            self._traverse(child, prefix + char, visit)
+            # print(f"prefix in treverse: {prefix + char}")
 
 
 def create_prefix_tree(strings):
@@ -163,6 +198,8 @@ def create_prefix_tree(strings):
     retrieved_strings = tree.strings()
     print(f'strings: {retrieved_strings}')
     matches = set(retrieved_strings) == set(strings)
+    print('set(strings): ', set(strings))
+    print('set(retireved_strings): ', set(retrieved_strings))
     print(f'matches? {matches}')
 
 
