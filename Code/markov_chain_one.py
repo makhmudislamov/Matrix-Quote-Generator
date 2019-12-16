@@ -73,17 +73,20 @@ def starting_word(pure_text, markov_chain):
             return words
     
 
-def starting_state(markov_chain, word):
+def starting_state(markov_chain, word=None):
     """
     Returns randomly picked state from the Markov chain
     """
-    starting_keys = []
-    for words_tuple in markov_chain.keys():
-        if word in words_tuple:
-            starting_keys.append(words_tuple)
+    if word is None:
+        return random.choice(list(markov_chain.keys()))
+    else:
+        starting_keys = []
+        for words_tuple in markov_chain.keys():
+            if word in words_tuple:
+                starting_keys.append(words_tuple)
             # print(f"key in markov that has {word} and the key is {words_tuple} ")
     # print(f" starting keys {starting_keys}")
-    return random.choice(starting_keys)
+        return random.choice(starting_keys)
 
 
 # print(starting_word(pure_text))
@@ -147,5 +150,5 @@ if __name__ == '__main__':
     markov_chain = markov_chain_n_order(order, pure_text)
     # print('start state:', starting_state(markov_chain))
     # pprint(markov_chain)
-    print(starting_state(markov_chain, "loxy"))
-    # print(generate_sentence(markov_chain, 9))
+    print(starting_state(markov_chain))
+    print(generate_sentence(markov_chain, 9))
