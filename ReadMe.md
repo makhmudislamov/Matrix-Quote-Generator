@@ -13,7 +13,8 @@ Matrix Quote Generator is a fun web app that utilizes Markov chain to generate s
 
 ## Current Features
 * [X] Users can input prefix 
-* [X] Users can see retrieved words from input prefix
+* [X] Users can see retrieved words from the source text 
 * [X] Random quote generation using chosen word retrieved 
+* [X] If there is no match user can proceed and the app will generate random quote without chosen word
 
 
