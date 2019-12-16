@@ -41,7 +41,9 @@ def quote():
     filename = './corpus.txt'
     pure_text = file_cleaner(filename)
     markov_chain = markov_chain_n_order(4, pure_text)
-    generated_sentence = generate_sentence(markov_chain, 20)
+    if request.method == 'POST':
+        word = request.form['chosen_word']
+        generated_sentence = generate_sentence(markov_chain, 20, word)
     return render_template('sentence.html', displayed=generated_sentence)
 
 

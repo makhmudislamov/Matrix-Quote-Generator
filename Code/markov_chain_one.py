@@ -77,25 +77,27 @@ def starting_state(markov_chain, word=None):
     """
     Returns randomly picked state from the Markov chain
     """
+    starting_keys = []
+
     if word is None:
         return random.choice(list(markov_chain.keys()))
-    else:
-        starting_keys = []
+    else:    
         for words_tuple in markov_chain.keys():
             if word in words_tuple:
                 starting_keys.append(words_tuple)
-            # print(f"key in markov that has {word} and the key is {words_tuple} ")
-    # print(f" starting keys {starting_keys}")
+        # returns tuple
         return random.choice(starting_keys)
 
 
 # print(starting_word(pure_text))
-def generate_sentence(markov_chain, length=8):
+def generate_sentence(markov_chain, length=8, word=None):
     """
     Takes markov chained dictionary and generates a sentence
     """
     # current_words = starting_word(pure_text, markov_chain)
-    previous_state = starting_state(markov_chain)
+    # user's choice of words should be passed into this function
+    previous_state = starting_state(markov_chain, word)
+    print(f"starting state inside sentence gen func {previous_state}")
     # print('start state:', previous_state)
     if previous_state not in markov_chain:
         print(previous_state, "not in Marov chain")
@@ -150,5 +152,5 @@ if __name__ == '__main__':
     markov_chain = markov_chain_n_order(order, pure_text)
     # print('start state:', starting_state(markov_chain))
     # pprint(markov_chain)
-    print(starting_state(markov_chain))
+    starting_state(markov_chain, "loxy")
     print(generate_sentence(markov_chain, 9))
