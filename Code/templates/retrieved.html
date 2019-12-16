@@ -2,56 +2,9 @@
 
 <html lang="en">
 
-<!--
-Original Code:
-*(c) Copyright 2011 Simone Masiero. Some Rights Reserved.
-*This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
-
-Modified Version:
-*(c) Copyright 2012 HackerTyper.com. Some Rights Reserved.
--->
 
 	<head>
-<style type="text/css">
-* {/* for demo only*/
-    margin:0px;
-    padding:0px
-}
-html, body {
-    height:100%;/* needed to base 100% height on something known*/
-   // text-align:center;
-}
-.outer {
-    //width:760px;
-    //background:#ffffcc;
-    margin:auto;
-    min-height:100%;
-    margin-top:0px;/*footer height - this drags the outer 40px up through the top of the monitor */
-    text-align:left;
-}
-* html .outer {
-    height:100%
-}
 
-
-/*Opera Fix*/
-body:before {/* thanks to Maleika (Kohoutec)*/
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px;/* thank you Erik J - negate effect of float*/
-}
-h1, h2, p {
-    padding:0 10px;
-}
-.outer:after {/* thank you Erik J - instead of using display table for ie8*/
-    clear:both;
-    display:block;
-    height:1%;
-    content:" ";
-}
-</style>
 		<meta charset="utf-8">
 
 		<title>Red Pill Quotes</title>
@@ -63,18 +16,20 @@ h1, h2, p {
 	</head>
 
 	<body style="text-align:center; ">
-            <h1>Red Pill Quotes from The Matrix</h1> 
+            <h1>Quotes from The Matrix</h1> 
 
-            <table id="generatedWords" style="text-align:center; ">
+            <div id="words" style="width: 200px; margin-left: auto; margin-right: auto;">
+                 <table id="generatedWords">
                 <tr>
-                    <th>Choose a word to generate a sentence</th>
+                    <th>Choose a word to generate a sentence:</th>
                 </tr>
                         {% for word in words %}
                     <tr>
                         <th>{{word}}</th>
                     </tr>
-                        {% endfor %}
-            </table>
+                        {% endfor %}    
+                </table>
+            </div>
 
         <div id="autcomplete">
                 <h3>Copy paste your word below</h3> 
@@ -88,9 +43,7 @@ h1, h2, p {
             
                 </form> 
         </div>
-                <footer>
-                    <h3>this is retireved.html. it should show the words and input box for chosen word</h3>
-                </footer>
+
 	</body>
 
 </html>

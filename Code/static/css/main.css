@@ -1,3 +1,43 @@
+* {/* for demo only*/
+    margin:0px;
+    padding:0px
+}
+html, body {
+    height:100%; /* needed to base 100% height on something known*/
+    text-align:center;
+}
+.outer {
+    /* width:760px;
+    background: #ffffcc; */
+    margin:auto;
+    min-height:100%;
+    margin-top:0px;/*footer height - this drags the outer 40px up through the top of the monitor */
+    text-align:left;
+}
+
+* html .outer {
+    height:100%
+}
+
+
+/*Opera Fix*/
+body:before {/* thanks to Maleika (Kohoutec)*/
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+}
+h1, h2, p {
+    padding:0 10px;
+}
+.outer:after {/* thank you Erik J - instead of using display table for ie8*/
+    clear:both;
+    display:block;
+    height:1%;
+    content:" ";
+}
+
 html, body{
 	background:#000000;
 	color:#00FF00;

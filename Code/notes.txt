@@ -39,4 +39,6 @@ All the above routes and relevant htmls are working
 now I have to work with my generate_sentence function. It should take a string 
 find the keys that contains this string and then proceed to sentence generation
 
-         
+BUG:
+
+when printing generate_sentence it is also printing [object Object]. look at your JS code delayPrint function

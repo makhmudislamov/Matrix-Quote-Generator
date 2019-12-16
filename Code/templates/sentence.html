@@ -12,46 +12,7 @@ Modified Version:
 -->
 
 	<head>
-<style type="text/css">
-* {/* for demo only*/
-    margin:0px;
-    padding:0px
-}
-html, body {
-    height:100%;/* needed to base 100% height on something known*/
-   // text-align:center;
-}
-.outer {
-    //width:760px;
-    //background:#ffffcc;
-    margin:auto;
-    min-height:100%;
-    margin-top:0px;/*footer height - this drags the outer 40px up through the top of the monitor */
-    text-align:left;
-}
-* html .outer {
-    height:100%
-}
 
-
-/*Opera Fix*/
-body:before {/* thanks to Maleika (Kohoutec)*/
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px;/* thank you Erik J - negate effect of float*/
-}
-h1, h2, p {
-    padding:0 10px;
-}
-.outer:after {/* thank you Erik J - instead of using display table for ie8*/
-    clear:both;
-    display:block;
-    height:1%;
-    content:" ";
-}
-</style>
 		<meta charset="utf-8">
 
 		<title>Red Pill Quotes</title>
@@ -63,31 +24,34 @@ h1, h2, p {
 	</head>
 
 	<body style="text-align:center; ">
-            <h1>Red Pill Quotes from The Matrix</h1> 
+            <h1>Quotes from The Matrix</h1> 
 
 		<div style="margin: 0 auto;" id='console' class="outer">
-            <h2 id='sentence'>{{displayed}}</h2>
-            
+                
+                <h2 id='sentence'>{{displayed}}</h2>
+                 
         </div>
-        
-                <footer>
-                    <h3>this is sentence.html. it should show the generated quote</h3>
-                </footer>
 
     <script>
     // function that prints the sentece letter by letter
-        let message = document.getElementById('sentence').innerHTML;
-        console.log(message)
+        var message = document.getElementById('sentence').innerHTML;
+        
         var delayPrint = function (target, message, index, interval) {
             if (index < message.length) {
                 $(target).append(message[index++]);
                 setTimeout(function () { delayPrint(target, message, index, interval); }, interval);
                 }
             }
-        $(function () {
+        let printWithEffect = $(function () {
             delayPrint("#sentence", message, 0, 30);   
         });
-        
+        document.getElementById('sentence').innerHTML = printWithEffect
+
+        console.log(message)
+        console.log(printWithEffect)
+
+
+         
     </script>
 	</body>
 
