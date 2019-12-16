@@ -13,19 +13,9 @@ Autocomplete feature:
 4. everytime new word is input, the page should refresh and print new sentence. 
 
 use ajax call for input box - calls to ur server on different route and provides autocomplete 
-returns json >> update the DOM element. 
+returns json >> update the DOM element. >>> https://phppot.com/jquery/jquery-ajax-autocomplete-country-example/
 
-{% comment %} <div id="wordOptions"> {% endcomment %}
-            {% comment %} 
-                top 5 words will be displayed here
-             {% endcomment %}
-         
-         {% comment %} </div> {% endcomment %}
-
-         {% comment %} {{displayed}} {% endcomment %}
-
-
-Arcitechture 
+route Arcitechture 
 
 Route: "/" >> home.html >>> should take prefix input POST METHOD
 then it should redirect to
